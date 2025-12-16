@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
 import { fabric } from "fabric-pure-browser";
 
-const socket = io("http://localhost:8080");
+const socket = io(import.meta.env.VITE_SOCKET_URL);
 
 export default function Whiteboard() {
   const canvasRef = useRef(null);
