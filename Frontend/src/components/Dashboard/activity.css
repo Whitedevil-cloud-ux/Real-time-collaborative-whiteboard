@@ -1,0 +1,16 @@
+.recent-activity-container {
+  background: #fff;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  height: 100%;
+}
+
+.activity-item {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}

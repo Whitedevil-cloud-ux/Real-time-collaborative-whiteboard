@@ -1,0 +1,21 @@
+.profile-summary-card {
+  background: #fff;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.profile-stats div {
+  text-align: center;
+}
+
+.profile-stats h4 {
+  font-size: 24px;
+  margin: 0;
+}
