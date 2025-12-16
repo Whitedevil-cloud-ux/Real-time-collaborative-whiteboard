@@ -12,8 +12,10 @@ module.exports.signup = async (req, res) => {
         const user = await User.create({ name, email, password, role: "user", });
         const token = createSecretToken(user._id);
         res.cookie("token", token, {
-            withCredentials: true,
-            httpOnly: false,
+            httpOnly: true,
+            secure: true,
+            sameSite: "None",
+            maxAge: 7 * 24 * 60 * 60 * 1000,
         });
         res.status(201).json({ message: "User signed up successfully", success: true, user });
     } catch (error) {
@@ -38,8 +40,10 @@ module.exports.login = async (req, res) => {
         }
         const token = createSecretToken(user._id);
         res.cookie("token", token, {
-            withCredentials: true,
-            httpOnly: false,
+            httpOnly: true,
+            secure: true,
+            sameSite: "None",
+            maxAge: 7 * 24 * 60 * 60 * 1000,
         });
         const { password: _, ...safeUser } = user._doc;
 
@@ -57,7 +61,11 @@ module.exports.login = async (req, res) => {
 
 module.exports.logout = (req, res) =>{
     console.log("Logout request received");
-    res.clearCookie("token");
+    res.clearCookie("token", {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+    });
     return res.status(200).json({
         message: "User logged out successfully",
         status: true
